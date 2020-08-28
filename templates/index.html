@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-md-12">
+	{% for i in data %}
+	<table class="table table-hovered mt-3 w-50 mx-auto">
+		<tbody>
+			<tr>
+				<th colspan="3" class="text-center">Data for {{i['name']}}</th>
+			</tr>
+			{% for key, value in i.items() %}
+			{% if key != "props" %}
+			<tr class="d-flex">
+				<th class="col-4">{{key}}</th>
+				<td class="text-center">:</td>
+				<td class="col-6">{{value}}</td>
+			</tr>
+			{% else %}
+			{% for j,k in json.loads(value).items() %}
+			<tr class="d-flex">
+				<th class="col-4">{{j}}</th>
+				<td class="text-center">:</td>
+				<td class="col-6">{{k}}</td>
+			<tr>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+	    </tbody>
+	</table>
+	{% endfor %}
+</div>
+{% endblock %}

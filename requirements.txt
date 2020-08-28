@@ -1,0 +1,4 @@
+flask
+gunicorn
+google-cloud-datastore==1.13.2
+requests
